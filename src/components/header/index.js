@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Container from '../container';
 import './styles.css';
 
-const Header = () => {
+const Header = ({ topics }) => {
+  const favorites = useMemo(() => topics.filter(item => item.favorite), [topics]);
   return (
     <div className='header-container'>
       <Container>
@@ -11,12 +12,12 @@ const Header = () => {
             React Favorites
           </div>
           <div className='header-nav-right'>
-            <div className='header-nav-item'>
-              Add favorite
-            </div>
-            <div className='header-nav-item'>
-              My list favorite
-            </div>
+            <a className='header-nav-item' onClick={}>
+              Add topic
+            </a>
+            <a className='header-nav-item' onClick={}>
+              My list ({favorites.length})
+            </a>
           </div>
         </div>
       </Container>
